@@ -1,6 +1,9 @@
 <?php
 require 'myQueue.php';
-$pdo = new PDO('mysql:host=127.0.0.1;dbname=queue;', 'root','');
+require 'config.php';
+
+$pdo = new PDO('mysql:host='.HOST.';dbname='.DB_NAME.';', DB_USER, DB_PASSW);
+
 $queue = new MyQueue($pdo, 'myqueue');
 
 while(1) {
