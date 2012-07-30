@@ -1,5 +1,4 @@
 <?php
-
 require 'myQueue.php';
 require 'config.php';
 

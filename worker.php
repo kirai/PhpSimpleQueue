@@ -10,5 +10,6 @@ while(1) {
   $msg = $queue->pop();
   if ($msg) {
     echo $msg;
+    echo "\r\n";
   }
 }

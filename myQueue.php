@@ -82,6 +82,9 @@ class MyQueue
     }
     $msg_data = $sth_select->fetchColumn();
 
+    // Do the task
+
+
     // Delete the locked message from the queue.
     $sth_delete = $this->pdo->prepare("
       DELETE FROM `{$this->qname}` WHERE id = :msg_id;
