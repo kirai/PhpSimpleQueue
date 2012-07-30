@@ -12,4 +12,5 @@ while(1) {
     echo $msg;
     echo "\r\n";
   }
+  sleep(1);
 }
