@@ -9,3 +9,4 @@ No multithreading, no nothing, just a fucking simple queue in a Mysql Table.
 
      Run "php worker.php" to consume messages
 
+     Run "php supervisor.php" to see how many messages are waiting to be processed
