@@ -1,4 +1,5 @@
 <?php
+
 //Takes care of having enough workers running
 
 require 'myQueue.php';
@@ -31,11 +32,10 @@ while(1) {
       $outputfile = "worker".$i;
       $pidfile = 0;
 
-      exec(sprintf("%s > %s 2>&1 & echo $! >> %s", $cmd, $outputfile, $pidfile));
+      exec(sprintf("%s > /dev/null 2>&1 & echo $! >> %s", $cmd, $pidfile));
 
-      echo " at ". $outputfile;
-      echo " with pid". $pidfile;
-
+      echo "\r\n";
+  
       $i++;
   }
 
