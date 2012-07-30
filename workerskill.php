@@ -32,5 +32,5 @@ class workersKill {
     }
 }
 
-$killer = new workersKill();
-$killer->killAllWorkers();
+// $killer = new workersKill();
+// $killer->killAllWorkers();

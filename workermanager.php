@@ -1,11 +1,13 @@
 <?php
 
 //Takes care of having enough workers running
-
 require 'myQueue.php';
 require 'config.php';
+require 'workerskill.php';
 
 $pdo = new PDO('mysql:host='.HOST.';dbname='.DB_NAME.';', DB_USER, DB_PASSW);
+
+$killer = new workersKill();
 
 function isRunning($pid){
     try{
@@ -24,7 +26,7 @@ while(1) {
   $result->execute(); 
   $number_of_rows = $result->fetchColumn();
 
-  if ($number_of_rows > 50) {
+  if ($number_of_rows > LAUNCH_NEW_WORKER_IF_QUEUE_OVER) {
       echo "Launching a new worker ";
       echo "\r\n";
       
@@ -38,6 +40,10 @@ while(1) {
   
       $i++;
   }
+  
+  if ($number_of_rows < 3) {
+    $killer->killAllWorkers();
+  } 
 
   echo "Number of tasks waiting in the queue: ".$number_of_rows;
   echo "\r\n";
